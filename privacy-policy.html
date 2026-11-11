@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy for ProPhoto AI</title>
+    <meta
+      name="description"
+      content="Privacy policy for the ProPhoto AI Android app, published by Lyudmila Simeonova EOOD."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1c1917;
+        --muted: #57534e;
+        --line: #e7e5e4;
+        --bg: #fafaf9;
+        --card: #ffffff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 17px/1.55 Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+      }
+      main {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+        background: var(--card);
+      }
+      h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 0.5rem; }
+      h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; }
+      h3 { font-size: 1.05rem; margin: 1.25rem 0 0.35rem; }
+      p, li { color: var(--ink); }
+      .meta { color: var(--muted); margin: 0.15rem 0; }
+      a { color: #047857; }
+      ul { padding-left: 1.2rem; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
+      footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Privacy policy for ProPhoto AI</h1>
+      <p class="meta"><strong>Effective date:</strong> 11 November 2026</p>
+      <p class="meta"><strong>App:</strong> ProPhoto AI, version 1.0.0</p>
+      <p class="meta"><strong>Publisher:</strong> Lyudmila Simeonova EOOD, developer name LS Virtual Assistant, Sofia, Bulgaria</p>
+      <p class="meta"><strong>Contact:</strong> <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a></p>
+      <p>
+        This is the policy for the ProPhoto AI Android app. It describes what the app actually does.
+        The publisher does not run a ProPhoto server, account system, ad network, or analytics service.
+      </p>
+
+      <h2>What the app does</h2>
+      <p>
+        ProPhoto AI makes a headshot from one to four photos you choose on your device. You pick a style
+        (Corporate, Studio, Creative, or Outdoor) and a provider. The default provider is xAI Grok Imagine
+        (<code>grok-imagine-image-2.0</code>). You can switch to Google Gemini
+        (<code>gemini-nano-banana-2.1</code>), Replicate FLUX Kontext Pro
+        (<code>black-forest-labs/flux-kontext-pro</code>), or fal.ai FLUX Kontext.
+      </p>
+      <p>
+        You paste that provider’s API key in Settings. The app sends your photos and the style prompt to the
+        provider you selected, using your key. You pay that provider under their own pricing. The publisher is
+        not billed and does not receive the payment.
+      </p>
+
+      <h2>Information the app handles</h2>
+      <h3>Photos</h3>
+      <p>
+        Photos stay on your device until you tap Generate. The app then resizes each photo on the device so the
+        long edge is at most 1024 pixels and encodes it as JPEG. It sends those images, and the style prompt,
+        only to the provider you selected:
+      </p>
+      <ul>
+        <li>xAI: <code>https://api.x.ai/v1/images/edits</code></li>
+        <li>Google Gemini: <code>https://generativelanguage.googleapis.com/v1beta/interactions</code></li>
+        <li>
+          Replicate: <code>https://api.replicate.com/v1/files</code> and the FLUX Kontext Pro predictions
+          endpoint. Replicate’s model accepts one reference image, so only the first photo is uploaded.
+        </li>
+        <li>
+          fal.ai: <code>https://fal.run/fal-ai/flux-pro/kontext</code> for one photo, or
+          <code>https://fal.run/fal-ai/flux-pro/kontext/max/multi</code> for two to four photos
+        </li>
+      </ul>
+      <p>
+        The app does not send the photos to Lyudmila Simeonova EOOD, or to any other host.
+      </p>
+
+      <h3>API keys</h3>
+      <p>
+        Each key is sent only to the matching provider, as the credential for that request
+        (<code>Authorization: Bearer</code> for xAI and Replicate, <code>Authorization: Key</code> for fal.ai,
+        and <code>x-goog-api-key</code> for Gemini). The publisher never receives the key.
+      </p>
+      <p>
+        On Android, the app stores the key with <code>expo-secure-store</code>
+        (<code>SecureStore.setItemAsync</code>, <code>getItemAsync</code>, and <code>deleteItemAsync</code> in
+        <code>lib/key-store.ts</code>). That module encrypts the value and keeps it in the app’s private
+        storage. The encryption key is held in the Android Keystore. The app does not turn on biometric unlock
+        for this item, so the library default applies. The stored names are
+        <code>prophoto.key.xai</code>, <code>prophoto.key.gemini</code>, <code>prophoto.key.replicate</code>,
+        and <code>prophoto.key.fal</code>.
+      </p>
+      <p>
+        The same source file has a web path used only when the project is run in a browser. On web, the key is
+        kept in a JavaScript memory map for that tab and is not written to <code>localStorage</code>. The
+        Google Play app is the Android build, which uses the Keystore path above.
+      </p>
+
+      <h3>Choices and generated images</h3>
+      <p>
+        The selected provider id is saved on the device with AsyncStorage, under the name
+        <code>prophoto-settings</code>. That record does not include the API key.
+      </p>
+      <p>
+        Generated headshots and a short history are saved on the device. The history list is AsyncStorage key
+        <code>prophoto.history.v1</code> (id, time, preset, provider id, file location, and whether a result
+        was an illustrative demo). On Android, the image file is written under the app’s document directory at
+        <code>headshots/&lt;id&gt;.jpg</code>. The app keeps at most 24 history items. When a newer result
+        pushes an older one out of that list, the app deletes that older file from the document directory.
+      </p>
+      <p>
+        If you save a result, the app asks for permission and writes it to your photo library through
+        Android’s media library. If you share a result, the app opens the Android share sheet. Where it goes
+        after that is up to the app you pick.
+      </p>
+
+      <h3>What this app does not do</h3>
+      <p>
+        The app has no accounts, no sign-in, and no profile. It does not include analytics, advertising, or a
+        crash-reporting SDK. It does not ask for your name, email, phone number, contacts, or location. It
+        does not record audio. The publisher does not sell personal data, because the publisher does not
+        receive it.
+      </p>
+
+      <h2>Providers</h2>
+      <p>
+        xAI, Google, Replicate, and fal.ai are separate companies. When you generate an image, the provider
+        you chose processes the photos, the prompt, and your API key under that provider’s own terms and
+        privacy policy. Those companies may store a request on their side. This app cannot delete a copy that
+        a provider keeps. Their policies are the place to look for that retention, and their account pages
+        are the place to ask them to delete it.
+      </p>
+      <p>Those providers may process data outside Bulgaria and the European Economic Area.</p>
+
+      <h2>How long data stays</h2>
+      <p>There is no ProPhoto server copy.</p>
+      <p>On the device:</p>
+      <ul>
+        <li>An API key remains in secure storage until you clear that field and tap Save, or until you uninstall the app.</li>
+        <li>A gallery item remains until you delete it in the Gallery tab, until it falls out of the 24-item history, or until you uninstall the app.</li>
+        <li>A photo you saved to the Android photo library remains there until you delete it with your gallery app. Uninstalling ProPhoto does not remove those saved copies.</li>
+        <li>The provider choice remains until you change it or uninstall the app.</li>
+      </ul>
+
+      <h2>Deletion</h2>
+      <p>
+        In Gallery, “Delete from gallery” removes that history entry and deletes the image file when it is
+        inside the app’s document directory.
+      </p>
+      <p>
+        In Settings, clearing the key field and tapping Save calls <code>SecureStore.deleteItemAsync</code>
+        for that provider.
+      </p>
+      <p>
+        Uninstalling the app removes its private storage, including secure-store entries, the history list,
+        and headshot files in the app document directory. It does not remove pictures you already saved to
+        the photo library, and it does not remove anything a provider stored.
+      </p>
+      <p>
+        To ask about this policy, email <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>. The
+        publisher has no account to close and no server copy to erase.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        ProPhoto AI is not directed at children. It does not ask the user’s age and it is not made for anyone
+        under 16 in the European Economic Area. The publisher does not knowingly collect personal data from
+        children. A parent who wants the app’s on-device data removed can delete gallery items, clear the API
+        key, or uninstall the app.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        If you are in the European Economic Area, you can ask for access, correction, erasure, restriction,
+        or a copy of personal data the publisher actually holds, and you can object to processing. Because
+        photos and keys are not sent to the publisher, the data the publisher can act on is limited to what
+        you still have on your device and to correspondence you send. You can also complain to the Commission
+        for Personal Data Protection (Комисия за защита на личните данни) in Bulgaria.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        The publisher will change the date at the top when this policy changes and will publish the new text
+        at the same address. The version inside the app links to this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Lyudmila Simeonova EOOD<br />
+        LS Virtual Assistant<br />
+        Sofia, Bulgaria<br />
+        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>
+      </p>
+    </main>
+  </body>
+</html>
