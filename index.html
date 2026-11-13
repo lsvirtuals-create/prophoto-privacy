@@ -185,6 +185,14 @@
         after that is up to the app you pick.
       </p>
 
+      <h3>Free closed test</h3>
+      <p>
+        During the free closed test, the app creates a random install ID and stores it on the device. The
+        ProPhoto backend keeps only hashed forms of that install ID and of the IP address, so it can
+        enforce the free daily photo limits. The server does not set a fixed expiry for those hashed
+        records; they are deleted when the test ends.
+      </p>
+
       <h3>What the publisher does not collect</h3>
       <p>
         The publisher does not receive your API key or your card details. It does not ask for your name, your
@@ -387,6 +395,10 @@
         <li>A report you submit stays so we can review it.</li>
         <li>A one-time sign-in link or code is kept only until it expires or is used.</li>
         <li>A photo is not written to disk or a database.</li>
+        <li>
+          During the free closed test, hashed forms of the install ID and of the IP address are kept
+          only to enforce the free daily photo limits, and are deleted when the test ends.
+        </li>
       </ul>
       <p>On the device:</p>
       <ul>
@@ -394,6 +406,7 @@
         <li>A gallery item remains until you delete it in the Gallery tab, until it falls out of the 24-item history, or until you uninstall the app or clear its data.</li>
         <li>A photo you saved to the Android photo library remains there until you delete it with your gallery app. Uninstalling ProPhoto does not remove those saved copies.</li>
         <li>The provider choice remains until you change it, uninstall, or clear the app’s data.</li>
+        <li>During the free closed test, the random install ID remains on the device until you uninstall the app or clear its data.</li>
         <li>A report that could not be sent may remain on the device until it is sent, or until you uninstall the app or clear its data.</li>
         <li>Email you send us is kept only as long as needed to answer you and to meet any legal record-keeping duty.</li>
       </ul>
