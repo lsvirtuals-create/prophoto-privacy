@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy policy for ProPhoto AI</title>
+    <title>Privacy policy for ProPhoto AI Headshots</title>
     <meta
       name="description"
-      content="Privacy policy for the ProPhoto AI Android app, published by Lyudmila Simeonova EOOD."
+      content="Privacy policy for the ProPhoto AI Headshots Android app, published by Lyudmila Simeonova EOOD, developer name EastOfMap."
     />
     <style>
       :root {
@@ -43,39 +43,69 @@
   </head>
   <body>
     <main>
-      <h1>Privacy policy for ProPhoto AI</h1>
-      <p class="meta"><strong>Effective date:</strong> 11 November 2026</p>
+      <h1>Privacy policy for ProPhoto AI Headshots</h1>
+      <p class="meta"><strong>Effective date:</strong> 13 November 2026</p>
       <p class="meta"><strong>Scope:</strong> users worldwide</p>
-      <p class="meta"><strong>App:</strong> ProPhoto AI, version 1.0.0</p>
-      <p class="meta"><strong>Publisher and controller:</strong> Lyudmila Simeonova EOOD, EIK 205676881, developer name LS Virtual Assistant, Sofia, Bulgaria</p>
+      <p class="meta"><strong>App:</strong> ProPhoto AI Headshots, Android package <code>com.lsvirtuals.prophoto</code></p>
+      <p class="meta"><strong>Publisher and controller:</strong> Lyudmila Simeonova EOOD, EIK 205676881, developer name EastOfMap, Sofia, Bulgaria</p>
       <p class="meta"><strong>Contact:</strong> <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a></p>
       <p class="meta"><strong>Policy address:</strong> <a href="https://lsvirtuals-create.github.io/prophoto-privacy/privacy-policy.html">https://lsvirtuals-create.github.io/prophoto-privacy/privacy-policy.html</a></p>
       <p>
-        This policy applies to people who use the ProPhoto AI Android app, wherever they are. It describes what
-        the app actually does. The publisher does not run a ProPhoto server, account system, ad network, or
-        analytics service.
+        This policy applies to people who use the ProPhoto AI Headshots Android app, wherever they are. It
+        describes what the app actually does. The app has no ads, no analytics, and no advertising ID. The
+        publisher does not sell personal information.
       </p>
 
       <h2>What the app does</h2>
       <p>
-        ProPhoto AI makes a headshot from one to four photos you choose on your device. You pick a style
-        (Corporate, Studio, Creative, or Outdoor) and a provider. The default provider is xAI Grok Imagine
-        (<code>grok-imagine-image-2.0</code>). You can switch to Google Gemini
-        (<code>gemini-nano-banana-2.1</code>), Replicate FLUX Kontext Pro
-        (<code>black-forest-labs/flux-kontext-pro</code>), or fal.ai FLUX Kontext.
+        ProPhoto AI Headshots makes a headshot from one to four photos you choose on your device. You pick a
+        style (Corporate, Studio, Creative, or Outdoor). The app is for people aged 18 and older.
       </p>
       <p>
-        You paste that provider’s API key in Settings. The app sends your photos and the style prompt to the
-        provider you selected, using your key. You pay that provider under their own pricing. The publisher is
-        not billed and does not receive the payment.
+        The default mode is ProPhoto credits. When you tap Generate, the app sends your photos and the style
+        prompt over HTTPS to the ProPhoto backend. The backend forwards them to xAI to generate the headshot,
+        using xAI Grok Imagine (<code>grok-imagine-image</code>) and a key that stays on the server. The photos
+        are processed only for that request. They are held in memory on our server and are not written to disk
+        or a database. They are not kept after the request ends. xAI then handles the request under its own
+        terms and privacy documents, which are linked below. We do not control how long xAI keeps a copy, or
+        where it stores it.
+      </p>
+      <p>
+        Credits are sold as one-time Google Play purchases. There is no subscription. Google processes the
+        payment. We do not receive your card details. We keep a purchase record and a credit balance so we can
+        provide the credits you bought and so the same purchase cannot be credited twice.
+      </p>
+      <p>
+        Sign-in is optional. If you choose to sign in, you use your email address and a one-time link, or a
+        short code from the same email. There is no password. We use the email for account and credit
+        management, for example to restore your balance. You can also use credits on a device without signing
+        in with email.
+      </p>
+      <p>
+        Settings → Advanced is an optional own-API-key mode. You can paste a key for xAI Grok Imagine
+        (<code>grok-imagine-image-2.0</code>), Google Gemini (<code>gemini-nano-banana-2.1</code>),
+        Replicate FLUX Kontext Pro (<code>black-forest-labs/flux-kontext-pro</code>), or fal.ai FLUX Kontext.
+        In that mode the keys stay on your device, encrypted with the Android Keystore, and your photos go
+        directly from the device to the provider you chose, not through the ProPhoto backend. You pay that
+        provider under their own pricing. The publisher is not billed and does not receive the payment or the
+        key.
       </p>
 
       <h2>Information the app handles</h2>
       <h3>Photos</h3>
       <p>
         Photos stay on your device until you tap Generate. The app then resizes each photo on the device so the
-        long edge is at most 1024 pixels and encodes it as JPEG. It sends those images, and the style prompt,
-        only to the provider you selected:
+        long edge is at most 1024 pixels and encodes it as JPEG.
+      </p>
+      <p>
+        In ProPhoto credits mode, those images and the style prompt are sent over HTTPS to the ProPhoto
+        backend, which forwards them to xAI at <code>https://api.x.ai/v1/images/edits</code>. The backend does
+        not store the photos. After the request ends, they are discarded from our server. What xAI keeps, and
+        for how long, is governed by xAI’s own documents, linked in the transfers section below.
+      </p>
+      <p>
+        In own-API-key mode the app sends the images and the style prompt from your device straight to the
+        provider you selected, and not to the ProPhoto backend:
       </p>
       <ul>
         <li>xAI: <code>https://api.x.ai/v1/images/edits</code></li>
@@ -89,40 +119,65 @@
           <code>https://fal.run/fal-ai/flux-pro/kontext/max/multi</code> for two to four photos
         </li>
       </ul>
-      <p>The app does not send the photos to Lyudmila Simeonova EOOD, or to any other host.</p>
+
+      <h3>Credits, purchases, and accounts</h3>
+      <p>
+        To provide credits, the backend stores a random account token as a hash, a credit balance, and a
+        purchase record. The purchase record includes the Google Play purchase token, the product id, and the
+        credits granted, so a purchase cannot be credited twice. Google Play processes the payment. We do not
+        receive card numbers or other payment-card details.
+      </p>
+      <p>
+        The Android app can create this credit account with a device token and no email. If a generation fails
+        after a credit was used, the credit is returned to the balance.
+      </p>
+
+      <h3>Optional email sign-in</h3>
+      <p>
+        If you sign in, we store the email address you provide and use it for account and credit management.
+        The app sends a one-time link and a short code to that address. They expire after a short time, and
+        there is no password. The sign-in email is sent through our email delivery provider (Resend, when that
+        service is configured). We do not sell the email address.
+      </p>
+
+      <h3>Report this result</h3>
+      <p>
+        Each generated result includes a “Report this result” control. If you use it, the app sends a report to
+        the ProPhoto backend. A report includes the result identifier, the reason you picked (for example, that
+        the image does not look like the person, is inappropriate or unsafe, is poor quality, or something
+        else), and an optional short note you type. It does not include your original photos or the generated
+        image. If you have a credit account on that device, the report may be stored with that account. If the
+        report cannot be sent immediately, the app can keep it on the device until it can be sent.
+      </p>
 
       <h3>API keys</h3>
       <p>
-        Each key is sent only to the matching provider, as the credential for that request
-        (<code>Authorization: Bearer</code> for xAI and Replicate, <code>Authorization: Key</code> for fal.ai,
-        and <code>x-goog-api-key</code> for Gemini). The publisher never receives the key.
+        This section applies only if you use own-API-key mode. Each key is sent only to the matching provider,
+        as the credential for that request (<code>Authorization: Bearer</code> for xAI and Replicate,
+        <code>Authorization: Key</code> for fal.ai, and <code>x-goog-api-key</code> for Gemini). The publisher
+        never receives the key.
       </p>
       <p>
-        On Android, the app stores the key with <code>expo-secure-store</code>
-        (<code>SecureStore.setItemAsync</code>, <code>getItemAsync</code>, and <code>deleteItemAsync</code> in
-        <code>lib/key-store.ts</code>). That module encrypts the value and keeps it in the app’s private
-        storage. The encryption key is held in the Android Keystore. The app does not turn on biometric unlock
-        for this item, so the library default applies. The stored names are
-        <code>prophoto.key.xai</code>, <code>prophoto.key.gemini</code>, <code>prophoto.key.replicate</code>,
-        and <code>prophoto.key.fal</code>.
+        On Android, the app stores the key with expo-secure-store in the app’s private storage. The value is
+        encrypted, and the encryption key is held in the Android Keystore. The app does not turn on biometric
+        unlock for this item, so the library default applies.
       </p>
       <p>
-        The same source file has a web path used only when the project is run in a browser. On web, the key is
-        kept in a JavaScript memory map for that tab and is not written to <code>localStorage</code>. The
+        The same storage module has a web path used only when the project is run in a browser. On web, the key
+        is kept in a JavaScript memory map for that tab and is not written to <code>localStorage</code>. The
         Google Play app is the Android build, which uses the Keystore path above.
       </p>
 
       <h3>Choices and generated images</h3>
       <p>
-        The selected provider id is saved on the device with AsyncStorage, under the name
-        <code>prophoto-settings</code>. That record does not include the API key.
+        Your provider choice is saved on the device. That record does not include the API key.
       </p>
       <p>
-        Generated headshots and a short history are saved on the device. The history list is AsyncStorage key
-        <code>prophoto.history.v1</code> (id, time, preset, provider id, file location, and whether a result
-        was an illustrative demo). On Android, the image file is written under the app’s document directory at
-        <code>headshots/&lt;id&gt;.jpg</code>. The app keeps at most 24 history items. When a newer result
-        pushes an older one out of that list, the app deletes that older file from the document directory.
+        Generated headshots and a short history are saved on the device (when the result was made, which style
+        and provider were used, where the file is, and whether a result was an illustrative demo). On Android,
+        the image file is written under the app’s document directory. The app keeps at most 24 history items.
+        When a newer result pushes an older one out of that list, the app deletes that older file from the
+        document directory.
       </p>
       <p>
         If you save a result, the app asks for permission and writes it to your photo library through
@@ -132,24 +187,34 @@
 
       <h3>What the publisher does not collect</h3>
       <p>
-        The publisher does not receive your photos, your API key, your name, your email (unless you email us),
-        your phone number, your contacts, your location, or a device identifier. The app has no accounts, no
-        sign-in, and no profile. It does not include analytics, advertising, or a crash-reporting SDK. It does
-        not record audio. The publisher does not sell personal information and does not share it for
-        cross-context behavioral advertising. The publisher does not run targeted ads and does not profile you.
+        The publisher does not receive your API key or your card details. It does not ask for your name, your
+        phone number, your contacts, or your location, and it does not record an advertising ID. The app does
+        not include analytics, advertising, or a crash-reporting SDK. It does not record audio. The publisher
+        does not sell personal information and does not share it for cross-context behavioral advertising. The
+        publisher does not run targeted ads and does not profile you.
+      </p>
+
+      <h2>Website checkout</h2>
+      <p>
+        The same credits backend may also be used on the ProPhoto website. Website sign-in uses your email and
+        a one-time link, as described above. Card or Revolut Pay on the website is a one-time purchase handled
+        by Revolut. The publisher does not receive the card number. Revolut’s privacy notice is
+        <a href="https://www.revolut.com/legal/privacy/">https://www.revolut.com/legal/privacy/</a>. The
+        Android app does not offer that checkout. Packs bought in the Android app are paid through Google Play.
       </p>
 
       <h2>International users and transfers</h2>
       <p>
-        The publisher is in Sofia, Bulgaria. The publisher does not transfer your photos or API key to its own
-        servers, because it has none.
+        The publisher is in Sofia, Bulgaria. In credits mode, your photos pass through the ProPhoto backend
+        over HTTPS and are then sent to xAI. The backend does not keep the photos. In own-API-key mode, the
+        photos and your key go from your device to the provider you chose, and the ProPhoto backend is not on
+        that path.
       </p>
       <p>
-        When you tap Generate, the app sends the photos and your key from your device to the provider you
-        chose. That provider processes them under its own privacy policy and the terms of the account that
-        owns the key. Those companies are based in the United States, and they and their subprocessors may
-        process the data in the United States or in other countries. xAI, the default, is one example of a US
-        provider.
+        When you tap Generate, the provider processes the photos under its own privacy policy. Those companies
+        are based in the United States, and they and their subprocessors may process the data in the United
+        States or in other countries. xAI is one example of a US provider. It is used in credits mode, and it
+        can also be chosen in own-API-key mode.
       </p>
       <p>Their policies, checked on 11 November 2026:</p>
       <ul>
@@ -159,7 +224,8 @@
           does not cover data xAI processes for customers of its API. API processing is described in xAI’s
           data processing addendum:
           <a href="https://x.ai/legal/data-processing-addendum">https://x.ai/legal/data-processing-addendum</a>.
-          Which of those applies depends on the xAI account tied to the key you enter.
+          In credits mode the request uses the publisher’s xAI API key, so the data processing addendum is the
+          relevant document. In own-API-key mode it depends on the xAI account tied to the key you enter.
         </li>
         <li>Google (Gemini): <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
         <li>Replicate: <a href="https://replicate.com/privacy">https://replicate.com/privacy</a></li>
@@ -180,21 +246,24 @@
       </p>
       <p>
         <strong>Controller.</strong> Lyudmila Simeonova EOOD, EIK 205676881, Sofia, Bulgaria, is the controller
-        for the processing the app performs on the device and for email you send to the publisher. The provider
-        you select is a separate controller, or a processor for the holder of the API key, for the photos and
-        key it receives. The publisher does not receive those photos or that key.
+        for data on the device, for the credit account, the balance, and purchase records, for optional email
+        sign-in, for reports you submit, for the brief handling of photos in credits mode, and for email you
+        send to the publisher. In credits mode, xAI processes the photos as the publisher’s processor under
+        xAI’s data processing addendum. In own-API-key mode, the provider you select is a separate controller,
+        or a processor for the holder of the API key. The publisher does not receive that key.
       </p>
       <p><strong>Legal bases.</strong></p>
       <ul>
         <li>
           Providing the feature you ask for (GDPR Article 6(1)(b), and the UK equivalent): resizing photos on
-          the device, storing your key and gallery so the app can work, and sending the generation request to
-          the provider you chose.
+          the device, storing your key and gallery so the app can work, keeping the credit balance and purchase
+          record, optional email sign-in for account and credit management, and sending the generation request.
         </li>
         <li>
-          Legitimate interests (Article 6(1)(f)): reading and answering email you send about this policy, and
-          keeping that correspondence. The publisher does not use legitimate interests to process face photos,
-          because it does not receive them.
+          Legitimate interests (Article 6(1)(f)): reading and answering email you send about this policy,
+          keeping that correspondence, refusing a purchase token that was already credited, and reviewing
+          reports you submit so we can improve quality and safety. The publisher does not keep face photos
+          after the request ends.
         </li>
         <li>
           Legal obligation (Article 6(1)(c)): only if a law requires the publisher to keep a record of a
@@ -210,8 +279,9 @@
         <strong>Your rights.</strong> Subject to the limits in the law, you can ask for access, rectification,
         erasure, restriction, and a portable copy of personal data the publisher actually holds. You can object
         to processing based on legitimate interests. Where processing is based on consent, you can withdraw
-        that consent. Because the publisher does not hold your photos or your API key, the data it can return
-        or delete is limited to email you sent and to telling you how to delete what is on your device.
+        that consent. The publisher can return or delete the credit account, balance, purchase records, email
+        address, and reports it holds, and email you sent. It does not hold your photos or your API key. It can
+        also tell you how to delete what is on your device.
       </p>
       <p>
         <strong>Complaints.</strong> You can complain to a supervisory authority. The publisher’s authority is
@@ -227,10 +297,13 @@
         collection for those laws.
       </p>
       <p>
-        <strong>Categories the publisher collects.</strong> None. The publisher does not collect personal
-        information onto its own systems. The app, on your device, handles photos you pick and the API key you
-        type, and sends them only to the provider you pick. If you email us, we receive whatever you put in
-        that email.
+        <strong>Categories the publisher collects.</strong> In credits mode: a random account token (stored as
+        a hash), a credit balance, Google Play purchase tokens and product ids, optional email if you sign in,
+        and reports you submit (result identifier, reason, and optional note). Photos are processed in memory
+        to forward them to xAI and are not stored. Card details stay with Google Play, or with Revolut if you
+        pay on the website. In own-API-key mode the publisher does not receive the photos or the key. If you
+        email us, we receive whatever you put in that email. The publisher does not collect your name, precise
+        location, contacts, or an advertising ID.
       </p>
       <p>
         <strong>Sale, sharing, ads, and profiling.</strong> The publisher does not sell personal information.
@@ -243,8 +316,8 @@
         <strong>Your rights.</strong> Depending on your state, you may have the right to know, to delete, to
         correct, and to opt out of sale, sharing, and targeted advertising. The publisher will not discriminate
         against you for exercising these rights. You will not be denied the app, charged a different price, or
-        given a lower quality of service for making a request. There is no account to punish and no
-        publisher-held profile to change.
+        given a lower quality of service for making a request. Email us to delete the credit account and the
+        related records described in this policy.
       </p>
       <p>
         <strong>Authorized agents.</strong> You may use an authorized agent where your state allows it. The
@@ -262,73 +335,91 @@
         <strong>Biometric information.</strong> The publisher does not create, collect, store, or sell
         biometric identifiers or biometric templates. It does not build a faceprint, a voiceprint, or a similar
         identifier. Illinois BIPA, the Texas Capture or Use of Biometric Identifier Act, and the Washington
-        biometric privacy law (RCW 19.375) are aimed at that kind of identifier. A face photo you choose is
-        sent only to the provider you choose, as an image for that provider’s model. The publisher never
-        receives the photo. Whether that provider derives anything from the image is governed by that
-        provider’s policy and your account with them, not by a biometric database of the publisher.
+        biometric privacy law (RCW 19.375) are aimed at that kind of identifier. A face photo you choose is an
+        image for the model, not a biometric template stored by the publisher. In credits mode the image is
+        held in memory only long enough to forward it to xAI and is not written down. In own-API-key mode the
+        publisher does not receive the photo. Whether the provider derives anything from the image is governed
+        by that provider’s policy, not by a biometric database of the publisher.
       </p>
 
       <h2>Children</h2>
       <p>
-        ProPhoto AI is not directed to children under 13, and the publisher does not knowingly collect
-        personal information from them (COPPA). It is not directed to anyone under 16 in the EU, the EEA, or
-        the UK. The Google Play target age for this app is 18 and older. The app does not ask for age and it
-        has no children’s account.
+        ProPhoto AI Headshots is not directed to children under 13, and the publisher does not knowingly
+        collect personal information from them (COPPA). It is not directed to anyone under 16 in the EU, the
+        EEA, or the UK. The Google Play target age for this app is 18 and older. The app does not ask for age
+        and it has no children’s account.
       </p>
       <p>
         A parent who believes a child used the app can email
-        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>. The publisher has no account to close
-        and no server copy of the child’s photos. On the device, a parent can delete gallery items, clear the
-        API key in Settings, clear the app’s data, or uninstall the app. Copies saved to the photo library are
-        deleted in the device gallery. Copies a provider stored are deleted through that provider.
+        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>. The server does not keep a copy of the
+        photos. The credit account and related records, if any were created, can be deleted on request, as
+        described below. On the device, a parent can delete gallery items, clear an API key in Settings, clear
+        the app’s data, or uninstall the app. Copies saved to the photo library are deleted in the device
+        gallery. Copies a provider stored are deleted through that provider.
       </p>
 
       <h2>Other regions</h2>
       <p>
         If you live somewhere else, including Canada (PIPEDA), Brazil (LGPD), or Australia (the Privacy Act),
         you have the rights your local law gives you. Email
-        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a> to use them. The same limit applies: the
-        publisher does not hold your photos or your API key.
+        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a> to use them. The publisher holds the
+        credit account, balance, purchase records, optional email, and reports described above. It does not
+        hold your photos or your API key.
       </p>
 
       <h2>Security</h2>
       <p>
-        Generation requests use HTTPS. On Android the API key is encrypted with a key in the Android Keystore
-        and kept in app-private storage. Gallery files sit in the app’s private document directory until you
-        delete them or save them to the photo library. No independent security audit has been done, and this
-        policy does not claim one. No method of storage or transmission is perfectly secure.
+        Generation requests use HTTPS. On Android an API key you enter is encrypted with a key in the Android
+        Keystore and kept in app-private storage. Gallery files sit in the app’s private document directory
+        until you delete them or save them to the photo library. Photos sent in credits mode are not stored on
+        our server. No independent security audit has been done, and this policy does not claim one. No method
+        of storage or transmission is perfectly secure.
       </p>
 
       <h2>How long data stays</h2>
-      <p>There is no ProPhoto server copy.</p>
+      <p>The ProPhoto backend does not keep photos.</p>
+      <p>On the server, in credits mode:</p>
+      <ul>
+        <li>
+          The account token hash, email if you signed in, credit balance, and purchase record stay so a
+          purchase cannot be credited twice and so the balance can be provided or restored.
+        </li>
+        <li>A report you submit stays so we can review it.</li>
+        <li>A one-time sign-in link or code is kept only until it expires or is used.</li>
+        <li>A photo is not written to disk or a database.</li>
+      </ul>
       <p>On the device:</p>
       <ul>
         <li>An API key remains in secure storage until you clear that field and tap Save, or until you uninstall the app or clear its data.</li>
         <li>A gallery item remains until you delete it in the Gallery tab, until it falls out of the 24-item history, or until you uninstall the app or clear its data.</li>
         <li>A photo you saved to the Android photo library remains there until you delete it with your gallery app. Uninstalling ProPhoto does not remove those saved copies.</li>
         <li>The provider choice remains until you change it, uninstall, or clear the app’s data.</li>
+        <li>A report that could not be sent may remain on the device until it is sent, or until you uninstall the app or clear its data.</li>
         <li>Email you send us is kept only as long as needed to answer you and to meet any legal record-keeping duty.</li>
       </ul>
       <p>A provider’s retention of a request is that provider’s policy.</p>
 
-      <h2>Deletion</h2>
+      <h2>Delete your account and data</h2>
       <p>
-        In Gallery, “Delete from gallery” removes that history entry and deletes the image file when it is
-        inside the app’s document directory.
+        To delete your ProPhoto account and the data we hold for it, email
+        <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a> and ask us to delete your account and
+        data. Please include the email address you used to sign in, if you signed in. We will delete the credit
+        account, email address, credit balance, purchase records, and reports we hold for that account. This
+        does not erase a photo from our server, because the server does not keep photos. It does not close a
+        Google Play order, and it does not remove copies a provider stored or pictures you already saved to
+        your photo library.
       </p>
       <p>
-        In Settings, clearing the key field and tapping Save calls <code>SecureStore.deleteItemAsync</code>
-        for that provider.
+        You can also delete data on the device yourself. In Gallery, “Delete from gallery” removes that history
+        entry and deletes the image file when it is inside the app’s document directory. In Settings, clearing
+        an API key field and tapping Save removes that key from secure storage.
       </p>
       <p>
         Uninstalling the app, or clearing its storage in Android settings, removes its private storage,
-        including secure-store entries, the history list, and headshot files in the app document directory. It
-        does not remove pictures you already saved to the photo library, and it does not remove anything a
-        provider stored.
-      </p>
-      <p>
-        To ask about this policy, email <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>. The
-        publisher has no account to close and no server copy to erase.
+        including saved keys, the history list, queued reports, and headshot files in the app document
+        directory. It does not remove pictures you already saved to the photo library, it does not remove the
+        server credit account, and it does not remove anything a provider stored. To delete the server account
+        after you uninstall, email us as described above.
       </p>
 
       <h2>Changes</h2>
@@ -343,7 +434,7 @@
       <p>
         Lyudmila Simeonova EOOD<br />
         EIK 205676881<br />
-        LS Virtual Assistant<br />
+        EastOfMap<br />
         Sofia, Bulgaria<br />
         <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a>
       </p>
