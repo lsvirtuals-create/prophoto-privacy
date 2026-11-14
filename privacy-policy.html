@@ -44,7 +44,7 @@
   <body>
     <main>
       <h1>Privacy policy for ProPhoto AI Headshots</h1>
-      <p class="meta"><strong>Effective date:</strong> 13 November 2026</p>
+      <p class="meta"><strong>Effective date:</strong> 14 November 2026</p>
       <p class="meta"><strong>Scope:</strong> users worldwide</p>
       <p class="meta"><strong>App:</strong> ProPhoto AI Headshots, Android package <code>com.lsvirtuals.prophoto</code></p>
       <p class="meta"><strong>Publisher and controller:</strong> Lyudmila Simeonova EOOD, EIK 205676881, developer name EastOfMap, Sofia, Bulgaria</p>
@@ -65,8 +65,10 @@
         The default mode is ProPhoto credits. When you tap Generate, the app sends your photos and the style
         prompt over HTTPS to the ProPhoto backend. The backend forwards them to xAI to generate the headshot,
         using xAI Grok Imagine (<code>grok-imagine-image</code>) and a key that stays on the server. The photos
-        are processed only for that request. They are held in memory on our server and are not written to disk
-        or a database. They are not kept after the request ends. xAI then handles the request under its own
+        are processed only for that request. Uploaded photos are held in memory on our server and are not
+        written to disk or a database. They are not stored. A finished headshot is held on the server for at
+        most 15 minutes so the app can download it, and it is deleted as soon as the app downloads it or when
+        that time expires. xAI then handles the request under its own
         terms and privacy documents, which are linked below. We do not control how long xAI keeps a copy, or
         where it stores it.
       </p>
@@ -99,8 +101,9 @@
       </p>
       <p>
         In ProPhoto credits mode, those images and the style prompt are sent over HTTPS to the ProPhoto
-        backend, which forwards them to xAI at <code>https://api.x.ai/v1/images/edits</code>. The backend does
-        not store the photos. After the request ends, they are discarded from our server. What xAI keeps, and
+        backend, which forwards them to xAI at <code>https://api.x.ai/v1/images/edits</code>. The uploaded
+        photo is not stored. A finished headshot is held on the server for at most 15 minutes and is deleted
+        as soon as the app downloads it, or when it expires. What xAI keeps, and
         for how long, is governed by xAI’s own documents, linked in the transfers section below.
       </p>
       <p>
@@ -214,7 +217,9 @@
       <h2>International users and transfers</h2>
       <p>
         The publisher is in Sofia, Bulgaria. In credits mode, your photos pass through the ProPhoto backend
-        over HTTPS and are then sent to xAI. The backend does not keep the photos. In own-API-key mode, the
+        over HTTPS and are then sent to xAI. Uploaded photos are not stored. A finished headshot is held on
+        the server for at most 15 minutes and is deleted as soon as the app downloads it, or when it expires.
+        In own-API-key mode, the
         photos and your key go from your device to the provider you chose, and the ProPhoto backend is not on
         that path.
       </p>
@@ -238,7 +243,7 @@
         <li>Google (Gemini): <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
         <li>Replicate: <a href="https://replicate.com/privacy">https://replicate.com/privacy</a></li>
         <li>
-          fal.ai (Features &amp; Labels Inc.):
+          fal.ai (Features & Labels Inc.):
           <a href="https://fal.ai/legal/privacy-policy">https://fal.ai/legal/privacy-policy</a>
         </li>
       </ul>
@@ -270,8 +275,8 @@
         <li>
           Legitimate interests (Article 6(1)(f)): reading and answering email you send about this policy,
           keeping that correspondence, refusing a purchase token that was already credited, and reviewing
-          reports you submit so we can improve quality and safety. The publisher does not keep face photos
-          after the request ends.
+          reports you submit so we can improve quality and safety. The publisher does not store uploaded
+          face photos. A finished headshot is held for at most 15 minutes and is then deleted.
         </li>
         <li>
           Legal obligation (Article 6(1)(c)): only if a law requires the publisher to keep a record of a
@@ -307,8 +312,10 @@
       <p>
         <strong>Categories the publisher collects.</strong> In credits mode: a random account token (stored as
         a hash), a credit balance, Google Play purchase tokens and product ids, optional email if you sign in,
-        and reports you submit (result identifier, reason, and optional note). Photos are processed in memory
-        to forward them to xAI and are not stored. Card details stay with Google Play, or with Revolut if you
+        and reports you submit (result identifier, reason, and optional note). Uploaded photos are processed
+        in memory to forward them to xAI and are not stored. A finished headshot is held on the server for at
+        most 15 minutes and is deleted as soon as the app downloads it or when it expires. Card details stay
+        with Google Play, or with Revolut if you
         pay on the website. In own-API-key mode the publisher does not receive the photos or the key. If you
         email us, we receive whatever you put in that email. The publisher does not collect your name, precise
         location, contacts, or an advertising ID.
@@ -345,7 +352,8 @@
         identifier. Illinois BIPA, the Texas Capture or Use of Biometric Identifier Act, and the Washington
         biometric privacy law (RCW 19.375) are aimed at that kind of identifier. A face photo you choose is an
         image for the model, not a biometric template stored by the publisher. In credits mode the image is
-        held in memory only long enough to forward it to xAI and is not written down. In own-API-key mode the
+        held in memory only long enough to forward it to xAI and is not written down. A finished headshot is
+        held for at most 15 minutes and is then deleted. In own-API-key mode the
         publisher does not receive the photo. Whether the provider derives anything from the image is governed
         by that provider’s policy, not by a biometric database of the publisher.
       </p>
@@ -379,13 +387,14 @@
       <p>
         Generation requests use HTTPS. On Android an API key you enter is encrypted with a key in the Android
         Keystore and kept in app-private storage. Gallery files sit in the app’s private document directory
-        until you delete them or save them to the photo library. Photos sent in credits mode are not stored on
-        our server. No independent security audit has been done, and this policy does not claim one. No method
+        until you delete them or save them to the photo library. Uploaded photos sent in credits mode are not
+        stored on our server. A finished headshot is held for at most 15 minutes and is then deleted. No
+        independent security audit has been done, and this policy does not claim one. No method
         of storage or transmission is perfectly secure.
       </p>
 
       <h2>How long data stays</h2>
-      <p>The ProPhoto backend does not keep photos.</p>
+      <p>The ProPhoto backend does not store uploaded photos. A finished headshot is held for at most 15 minutes and is then deleted.</p>
       <p>On the server, in credits mode:</p>
       <ul>
         <li>
@@ -394,7 +403,8 @@
         </li>
         <li>A report you submit stays so we can review it.</li>
         <li>A one-time sign-in link or code is kept only until it expires or is used.</li>
-        <li>A photo is not written to disk or a database.</li>
+        <li>An uploaded photo is not written to disk or a database.</li>
+        <li>A finished headshot is held on the server for at most 15 minutes so the app can download it, and it is deleted as soon as the app downloads it or when that time expires.</li>
         <li>
           During the free closed test, hashed forms of the install ID and of the IP address are kept
           only to enforce the free daily photo limits, and are deleted when the test ends.
@@ -418,7 +428,9 @@
         <a href="mailto:lsvirtuals@gmail.com">lsvirtuals@gmail.com</a> and ask us to delete your account and
         data. Please include the email address you used to sign in, if you signed in. We will delete the credit
         account, email address, credit balance, purchase records, and reports we hold for that account. This
-        does not erase a photo from our server, because the server does not keep photos. It does not close a
+        does not leave a copy of an uploaded photo on our server, because uploaded photos are not stored. A
+        finished headshot is held for at most 15 minutes and is deleted as soon as the app downloads it or
+        when it expires. It does not close a
         Google Play order, and it does not remove copies a provider stored or pictures you already saved to
         your photo library.
       </p>
